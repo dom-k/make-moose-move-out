@@ -1,14 +1,19 @@
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
+
 PURPLE = (200, 146, 248)
 BLUE = (141, 159, 242)
 RED = (233, 140, 91)
 GREEN = (129, 194, 131)
 BGCOLOR = (40, 40, 40)
+FGCOLOR = (240, 240, 240)
 
 FPS = 60
 
 SCREEN_WIDTH = 600
 SCREEN_HEIGHT = 800
 SCREEN_CAPTION = 'make moose move out'
+
+FONT = 'assets/slkscr.ttf'
+FONT_SIZE = 32
 
