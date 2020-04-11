@@ -2,23 +2,14 @@ import sys
 import pygame as pg
 from tool_button import ToolButton
 from mouse_pointer import MousePointer
-
-BGCOLOR = (40, 40, 40) # TODO: Make a settings.py file
-PURPLE = (200, 146, 248)
-BLUE = (141, 159, 242)
-RED = (233, 140, 91)
-GREEN = (129, 194, 131)
-FPS = 60
-SCREEN_WIDTH = 600
-SCREEN_HEIGHT = 800
-CAPTION = 'make moose move out'
+from settings import *
 
 class GameManager:
     def __init__(self):
         pg.init()
         self.screen = pg.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-        pg.display.set_caption(CAPTION)
-        pg.mouse.set_visible(1)
+        pg.display.set_caption(SCREEN_CAPTION)
+        pg.mouse.set_visible(0)
         self.clock = pg.time.Clock()
         self.all_sprites = pg.sprite.RenderPlain()
         self.tool_sprites = pg.sprite.RenderPlain()

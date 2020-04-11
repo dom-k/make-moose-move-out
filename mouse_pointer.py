@@ -1,7 +1,6 @@
 import pygame as pg
 vec_2 = pg.math.Vector2
-
-COLORKEY = (0, 0, 0)
+from settings import BLACK
 
 class MousePointer(pg.sprite.Sprite):
     def __init__(self, game):
@@ -10,7 +9,7 @@ class MousePointer(pg.sprite.Sprite):
         pg.sprite.Sprite.__init__(self, groups)
         self.pos = (0, 0)
         self.image = pg.image.load('assets/mouse_pointer.png').convert()
-        self.image.set_colorkey(COLORKEY)
+        self.image.set_colorkey(BLACK)
         self.rect = self.image.get_rect()
         self.clicking = 0
 
