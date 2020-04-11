@@ -12,9 +12,11 @@ class ToolButton(pg.sprite.Sprite):
         self.rect = self.image.get_rect(topleft=self.pos)
         self.name = name
 
-    def handle_click(self, mouse_pos):
-        if self.rect.collidepoint(mouse_pos):
-            print(self.name + ' clicked!')
+    def handle_event(self, event):
+        if event.type == pg.MOUSEBUTTONDOWN:
+            pos = pg.mouse.get_pos()
+            if self.rect.collidepoint(pos):
+                print(self.name + ' clicked!')
 
     def update(self):
         pass

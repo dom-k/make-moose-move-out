@@ -1,26 +1,35 @@
 import sys
 import pygame as pg
 from tool_button import ToolButton
+from mouse_pointer import MousePointer
 
-BGCOLOR = (40, 40, 40)
+BGCOLOR = (40, 40, 40) # TODO: Make a settings.py file
 PURPLE = (200, 146, 248)
 BLUE = (141, 159, 242)
 RED = (233, 140, 91)
 GREEN = (129, 194, 131)
 FPS = 60
+SCREEN_WIDTH = 600
+SCREEN_HEIGHT = 800
+CAPTION = 'make moose move out'
 
 class GameManager:
     def __init__(self):
         pg.init()
-        self.screen = pg.display.set_mode((600, 800))
-        pg.display.set_caption('make moose move out')
+        self.screen = pg.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+        pg.display.set_caption(CAPTION)
         pg.mouse.set_visible(1)
         self.clock = pg.time.Clock()
         self.all_sprites = pg.sprite.RenderPlain()
         self.tool_sprites = pg.sprite.RenderPlain()
-        self._init_tool_buttons()
+        self.core_sprites = pg.sprite.RenderPlain() # Should be rendered last
+        self._load_game_objects()
+        self._load_tool_buttons()
 
-    def _init_tool_buttons(self):
+    def _load_game_objects(self):
+        self.mouse_pointer = MousePointer(self)
+
+    def _load_tool_buttons(self):
         pos_y = 650
         self.net_button = ToolButton(self, 25, pos_y, PURPLE, 'Net')
         self.axe_button = ToolButton(self, 175, pos_y, BLUE, 'Axe')
@@ -40,20 +49,17 @@ class GameManager:
                 self.quit()
             elif event.type == pg.KEYDOWN and event.key == pg.K_ESCAPE:
                 self.quit()
-            elif event.type == pg.MOUSEBUTTONDOWN:
-                mouse_pos = event.pos
-                for sprite in self.tool_sprites:
-                    sprite.handle_click(mouse_pos)
-            elif event.type == pg.MOUSEBUTTONUP:
-                pass
+
+            for sprite in self.all_sprites:
+                sprite.handle_event(event)
 
     def update(self):
         self.all_sprites.update()
 
     def draw(self):
         self.screen.fill(BGCOLOR)
-        for sprite in self.all_sprites:
-            self.screen.blit(sprite.image, sprite.pos)
+        self.tool_sprites.draw(self.screen)
+        self.core_sprites.draw(self.screen)
         pg.display.flip()
 
     def quit(self):
