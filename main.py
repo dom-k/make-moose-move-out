@@ -2,6 +2,10 @@ import sys
 import pygame as pg
 from settings import *
 from tool_button import ToolButton
+from axe_tool_button import AxeToolButton
+from net_tool_button import NetToolButton
+from shovel_tool_button import ShovelToolButton
+from megaphone_tool_button import MegaphoneToolButton
 from mouse_pointer import MousePointer
 from animal_crossing_character import AnimalCrossingCharacter
 
@@ -25,10 +29,11 @@ class GameManager:
 
     def _load_tool_buttons(self):
         pos_y = 650
-        self.net_button = ToolButton(self, 25, pos_y, PURPLE, 'Net')
-        self.axe_button = ToolButton(self, 175, pos_y, BLUE, 'Axe')
-        self.shovel_button = ToolButton(self, 325, pos_y, RED, 'Shovel')
-        self.megaphone_button = ToolButton(self, 475, pos_y, GREEN, 'Megaphone')
+        self.net_button = NetToolButton(self, 25, pos_y, PURPLE, 'Net')
+        self.axe_button = AxeToolButton(self, 175, pos_y, BLUE, 'Axe')
+        self.shovel_button = ShovelToolButton(self, 325, pos_y, RED, 'Shovel')
+        self.megaphone_button = MegaphoneToolButton(self, 475, pos_y, GREEN, 'Megaphone')
+
 
     def run(self):
         while 1:
