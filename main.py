@@ -1,8 +1,9 @@
 import sys
 import pygame as pg
+from settings import *
 from tool_button import ToolButton
 from mouse_pointer import MousePointer
-from settings import *
+from animal_crossing_character import AnimalCrossingCharacter
 
 class GameManager:
     def __init__(self):
@@ -13,12 +14,14 @@ class GameManager:
         self.clock = pg.time.Clock()
         self.all_sprites = pg.sprite.RenderPlain()
         self.tool_sprites = pg.sprite.RenderPlain()
+        self.character_sprites = pg.sprite.RenderPlain()
         self.core_sprites = pg.sprite.RenderPlain() # Should be rendered last
         self._load_game_objects()
         self._load_tool_buttons()
 
     def _load_game_objects(self):
         self.mouse_pointer = MousePointer(self)
+        self.moose = AnimalCrossingCharacter(self, 100, 150)
 
     def _load_tool_buttons(self):
         pos_y = 650
@@ -50,6 +53,7 @@ class GameManager:
     def draw(self):
         self.screen.fill(BGCOLOR)
         self.tool_sprites.draw(self.screen)
+        self.character_sprites.draw(self.screen)
         self.core_sprites.draw(self.screen)
         pg.display.flip()
 

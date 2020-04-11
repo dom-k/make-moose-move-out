@@ -1,5 +1,5 @@
 import pygame as pg
-vec_2 = pg.math.Vector2
+vec2 = pg.math.Vector2
 from settings import BLACK
 
 class MousePointer(pg.sprite.Sprite):
