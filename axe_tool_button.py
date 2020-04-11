@@ -8,3 +8,4 @@ class AxeToolButton(ToolButton):
 
     def action(self):
         print('[%s] Hit mosse hard with %d damage' % (self.name, self.damage))
+        self.game.moose.health -= self.damage

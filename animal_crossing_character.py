@@ -14,9 +14,15 @@ class AnimalCrossingCharacter(pg.sprite.Sprite):
         self.image.fill(MOOSE_COLOR)
         self.rect = self.image.get_rect(topleft=self.pos)
         self.health = 100
+        self.moving_out_counter = 0
 
     def update(self):
-        pass
+        self._check_health()
+
+    def _check_health(self):
+        if self.health <= 0:
+            self.moving_out_counter += 1
+            self.health = 100
 
     def handle_event(self, event):
         pass

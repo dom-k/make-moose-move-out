@@ -8,6 +8,7 @@ from shovel_tool_button import ShovelToolButton
 from megaphone_tool_button import MegaphoneToolButton
 from mouse_pointer import MousePointer
 from animal_crossing_character import AnimalCrossingCharacter
+from health_bar import HealthBar
 
 class GameManager:
     def __init__(self):
@@ -26,6 +27,7 @@ class GameManager:
     def _load_game_objects(self):
         self.mouse_pointer = MousePointer(self)
         self.moose = AnimalCrossingCharacter(self, 100, 150)
+        self.health_bar = HealthBar(self, 100, 50, (240, 240, 240))
 
     def _load_tool_buttons(self):
         pos_y = 650
