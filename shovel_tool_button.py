@@ -1,10 +1,15 @@
 import pygame as pg
 from tool_button import ToolButton
+from spritesheet import Spritesheet
 
 class ShovelToolButton(ToolButton):
     def __init__(self, game, pos_x, pos_y, color, name):
         super(ShovelToolButton, self).__init__(game, pos_x, pos_y, color, name)
-        self.damage = 1
+        spritesheet_file = 'assets/tools.png'
+        spritesheet = Spritesheet(spritesheet_file)
+        self.image = spritesheet.get_image((0, 96), (32, 32))
+        self.image = pg.transform.scale(self.image, (100, 100))
+        self.damage = 2
 
     def action(self):
         print('[%s] Hit mosse hard with %d damage' % (self.name, self.damage))

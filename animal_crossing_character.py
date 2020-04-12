@@ -35,7 +35,6 @@ class AnimalCrossingCharacter(pg.sprite.Sprite):
 
     def _load_default_sprite(self):
         self.image = self._spritesheet.get_image((0, 0), ((32, 32)))
-        self.image.set_colorkey(BLACK)
         self.image = pg.transform.scale(self.image, (400, 400))
 
 
