@@ -33,8 +33,8 @@ class GameManager:
         self.mouse_pointer = MousePointer(self)
         self.moose = AnimalCrossingCharacter(self, 100, 150)
         self.health_bar = HealthBar(self, 100, 50, (240, 240, 240))
-        self.dialogbox = DialogBox(self, 100, 500, FGCOLOR)
-        self.end_dialog_text = EndDialogText(self, 110, 510, BGCOLOR)
+        self.dialogbox = DialogBox(self, 100, 550, FGCOLOR)
+        self.end_dialog_text = EndDialogText(self, 110, 560, BGCOLOR)
 
     def _load_tool_buttons(self):
         pos_y = 650

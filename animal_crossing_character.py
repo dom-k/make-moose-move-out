@@ -10,8 +10,11 @@ class AnimalCrossingCharacter(pg.sprite.Sprite):
         groups = game.all_sprites, game.character_sprites
         pg.sprite.Sprite.__init__(self, groups)
         self.pos = vec2(pos_x, pos_y)
-        self.image = pg.Surface((400, 400))
-        self.image.fill(MOOSE_COLOR)
+        # self.image = pg.Surface((400, 400))
+        # self.image.fill(MOOSE_COLOR)
+        self.image = pg.image.load('assets/moose_idle.png').convert()
+        self.image.set_colorkey(BLACK)
+        self.image = pg.transform.scale(self.image, (400, 400))
         self.rect = self.image.get_rect(topleft=self.pos)
         self.health = 100
         self.moving_out_counter = 0
@@ -26,7 +29,6 @@ class AnimalCrossingCharacter(pg.sprite.Sprite):
 
         if self.moving_out_wait_start_time and self.moved_out:
             time_since_start = pg.time.get_ticks() - self.moving_out_wait_start_time
-            print(time_since_start)
             if time_since_start >= 5000:
                 self.moved_out = False
                 self.moving_out_counter += 1
