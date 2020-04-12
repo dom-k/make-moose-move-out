@@ -8,4 +8,4 @@ class NetToolButton(ToolButton):
 
     def action(self):
         print('[%s] Hit mosse hard with %d damage' % (self.name, self.damage))
-        self.game.moose.health -= self.damage
+        self.game.moose.get_hit(self.damage)
