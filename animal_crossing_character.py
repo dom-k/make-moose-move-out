@@ -19,7 +19,6 @@ class AnimalCrossingCharacter(pg.sprite.Sprite):
         self.moved_out = False
 
     def update(self):
-        print(self.health)
         if self.health <= 0 and not self.moved_out:
             self.game.end_dialog_text.show_text = True
             self.moving_out_wait_start_time = pg.time.get_ticks()
@@ -27,11 +26,13 @@ class AnimalCrossingCharacter(pg.sprite.Sprite):
 
         if self.moving_out_wait_start_time and self.moved_out:
             time_since_start = pg.time.get_ticks() - self.moving_out_wait_start_time
+            print(time_since_start)
             if time_since_start >= 5000:
-                self.moved_out = True
+                self.moved_out = False
                 self.moving_out_counter += 1
                 self.health = 100
                 self.game.end_dialog_text.show_text = False
+                self.moving_out_wait_start_time = 0
 
     def handle_event(self, event):
         pass
